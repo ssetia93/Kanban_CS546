@@ -16,6 +16,7 @@ group.
 Team Members:
 Saloni Setia - Web 
 Shradha Nayak - Web 
-AjayShankar Arumugam - Web V
-andna Yadav - Web 
+AjayShankar Arumugam - Web 
+
+vandna Yadav - Web 
 Muskaan Mulchandani – Main Campus
