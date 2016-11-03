@@ -1,0 +1,19 @@
+{
+  "name": "kanban_cs546",
+  "version": "1.0.0",
+  "description": "final project for cs_546",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssetia93/Kanban_CS546.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssetia93/Kanban_CS546/issues"
+  },
+  "homepage": "https://github.com/ssetia93/Kanban_CS546#readme"
+}
