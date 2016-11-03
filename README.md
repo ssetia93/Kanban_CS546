@@ -14,4 +14,8 @@ b. To do (Listing tasks to be done today or in the next few days) c. Doing (Task
 group.
 
 Team Members:
-Saloni Setia - Web Shradha Nayak - Web AjayShankar Arumugam - Web Vandna Yadav - Web Muskaan Mulchandani – Main Campus
+Saloni Setia - Web 
+Shradha Nayak - Web 
+AjayShankar Arumugam - Web V
+andna Yadav - Web 
+Muskaan Mulchandani – Main Campus
