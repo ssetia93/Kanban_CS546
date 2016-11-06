@@ -1,0 +1,244 @@
+<html>
+	<head>
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title> Kanban Board for Planning </title>
+		<style>
+		body 
+		{
+        font-family: helvetica, arial, verdana, sans-serif;
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 300;
+        color: #404040;
+		background : #ffffff;
+        margin : 40px;
+        }
+		.logo {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 30px;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+        color: #ffffff;
+        background-color: #8bce00;
+        text-shadow: 2px 2px 2px #76b900;
+        }
+		.h3
+		{
+			color: white;
+			background-color: green;
+		}
+		#board
+		{
+			width: 1010px;
+			min-height:100px;
+			position:relative;
+		}
+		
+		.title
+		{
+			background-color:#52460a;	
+			text-align:center;
+			color:white;
+			padding: 3px 0px;
+		}
+		.menu
+		{
+			position: absolute;
+			right: 40px;
+			top: 40px;
+			font-size : 20px;
+		}
+		.menu div
+		 {
+         float          : left;
+         margin-right   : 40px;
+         font-weight    : bold;
+         cursor         : pointer;
+         transition     : all 0.3s;
+         padding        : 10px;
+         text-transform : uppercase;
+        }
+		.menu div:last-child {
+         margin-right : 0;
+         }
+
+        .menu div:hover {
+        color            : #ffffff;
+        background-color : #8bce00;
+        text-shadow      : 2px 2px 2px #76b900;
+        }
+
+		
+		#inprogress
+		{
+			left:302px;
+		}
+		
+		#done
+		{
+			left:604px;	
+		}
+		
+	    #todo,#inprogress,#done,#backup
+		{
+			background-color: tan;
+			position:absolute;
+			width: 300px;
+			min-height:550px;
+			border: 3px solid black;	
+			
+		}
+
+		#backup
+		{
+			left:906px;
+			
+		}
+		
+		*[draggable=true]
+		{
+			float:left;
+			min-width: 50px;
+			min-height: 50px;
+			border: 2px solid black;
+			margin: 10px;
+			font-weight:bold;
+			min-height:60px;
+						background-image: -webkit-gradient(linear, 
+            		left top, left bottom,
+					color-stop(0.63, white),  
+            		color-stop(0.92, rgb(5,161,245)));
+                    background-image:-moz-linear-gradient(                   
+                        center top,
+                        white 63%,
+                        rgb(5,161,245) 92%
+                    );
+            	 -webkit-background-size:1px 8px;
+            	 -moz-background-size:1px 8px;
+            	 background-size:1px 8px;
+				 background-repeat:repeat;
+		}
+		.cardTitle
+		{
+			background-color: rgb(255,255,255);
+			border:2px solid white;
+		}
+
+	   .text 
+	   {
+        position    : absolute;
+        top         : 180px;
+        left        : 40px;
+        width       : 300px;
+        font-size   : 16px;
+        line-height : 24px;
+        }
+
+        .button {
+         background-color : #8bce00;
+         display          : inline-block;
+         padding          : 5px 10px;
+         color            : #ffffff;
+         margin-top       : 10px;
+         font-weight      : bold;
+         transition       : all 0.2s;
+         cursor           : pointer;
+         text-transform   : uppercase;
+         text-shadow      : 2px 2px 2px #76b900;
+         }
+
+    .button:hover {
+    background-color : #a3e600;
+     }
+
+    #tasks {
+    background-color: black;
+    color: white;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+
+    }
+	</style>
+	<body>
+	
+		<div class="header">
+		<div class="logo"> KANBAN BOARD </div>
+	    <div class="menu">
+            <div>Create Task</div>
+            <div>Profile</div>
+           
+        </div>
+    </div> <br>
+		<h3 class="h3"> MY TASKS </h3>
+	 <div id="board">
+            <div id="todo">
+        	<div class="title">To Do</div>
+            <div id="item1" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b1" value ="#1"> Preparations </label></div> </div>
+            <div id="item2" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b2" value ="#2"> SRS </label></div></div>
+        	</div>
+			
+			
+		    <div id="inprogress">
+			<div class="title">In Progress</div>
+			 <div id="item3" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b3" value ="#3"> Research </label></div> </div>
+            <div id="item4" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b4" value ="#4"> Study </label></div></div>
+			</div>
+		    
+			<div id="done">
+			<div class="title">Done</div>
+			<div id="item5" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b5" value ="#5"> Research </label></div> </div>
+            <div id="item6" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b6" value ="#6"> Report </label></div></div>
+			</div>
+		
+			 <div id="backup">
+			<div class="title">Back Up</div>
+			<div id="item7" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b7" value ="#7"> Old Report </label></div> </div>
+            <div id="item8" draggable="true">
+            <div class="cardTitle"><label><input type="button" name= "b8" value ="#8"> Audit </label></div></div>
+			</div>
+			
+	</div>
+	
+	 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js">
+        </script>
+
+		<script type="text/javascript">
+		$('document').ready(init);
+		
+        function init(){
+            $('#item1, #item2, #item3, #item4, #item5, #item6, #item7, #item8').bind('dragstart', function(event) {
+                event.originalEvent.dataTransfer.setData("text/plain", event.target.getAttribute('id'));
+            });
+            
+  		    // bind the dragover event on the board sections
+            $('#todo, #inprogress, #done, #backup').bind('dragover', function(event) {
+                event.preventDefault();
+            });
+			
+			// bind the drop event on the board sections
+  			$('#todo, #inprogress, #done, #backup').bind('drop', function(event) {
+            var notecard = event.originalEvent.dataTransfer.getData("text/plain");
+            event.target.appendChild(document.getElementById(notecard));
+			// Turn off the default behaviour
+			// without this, FF will try and go to a URL with your id's name
+            event.preventDefault();
+			});
+        }
+		</script>
+	</body>
+</html>
+
