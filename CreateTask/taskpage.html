@@ -1,0 +1,105 @@
+<html>
+	<head>
+	
+		<title>Tasks</title>
+		<link rel="stylesheet" href="style.css"type="text/css" />
+		<style type="text/css">
+		  	label
+				{
+					 float: left;
+  					width: 150px;
+				}
+		</style>
+
+		<script type="text/javascript">
+       		 // Function for storing to cookie
+      			  function setCookie(c_name,value,exdays)
+      			  {
+          			  var exdate=new Date();
+          			  exdate.setDate(exdate.getDate() + exdays);
+          			  var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+           			 document.cookie=c_name + "=" + c_value;
+       			 }
+
+        			// Called on form's `onsubmit`
+       				 function tosubmit() 
+				 {
+           				 // Getting the value of your text input
+           				 var title = document.getElementById("title").value;
+
+					var description = document.getElementById("description").value;
+;
+					var created_date = document.getElementById("created_date").value;
+
+					var due_date = document.getElementById("due_date").value;
+
+					var priority = document.getElementById("priority").value;
+
+					var list = document.getElementById("list").value;
+
+					
+
+
+					 document.writeln("Thank you! You have just entered the following:");
+            					 document.writeln("<pre>");
+            					 document.writeln("Title    : " + title);
+            					 document.writeln("Description     : " + description);
+           				         document.writeln("Created Date : " + created_date);
+						 document.writeln("Due Date : " + due_date);
+						  document.writeln("Priority : " +priority );
+
+ 						 document.writeln("List : " +list );
+
+          			
+            				return true;
+      				  }
+
+   		 </script> 
+	</head>
+
+		<body>
+
+			<form action="#" method="get" onsubmit="tosubmit();">
+				<table>
+				 <tr><td><h1>Create Task</h1></td></tr>
+				 <tr> <td>
+                                  <label>Title </label></td><td> <Input type ="text" id="title" name ="title" value ="" required></td></tr>
+				  <tr> <td>
+				<label>Description </label></td><td><textarea name="Description" id="description" rows="5" cols="50"></textarea>
+				</td></tr>	
+				 <tr> <td>
+                                  <Label> Date Created</label></td><td><input type ="date" id="created_date" name="created_date" value ="" required>
+				 </td></tr>
+				 <tr> <td>
+				  <Label> Due Date</label></td><td><input type ="date" id="due_date" name="due_date" value ="" required>
+				  </tr> </td>
+				  <tr><td>
+				  <label>Priority </label></td>
+                                        
+				  		<td>
+						<input type="radio" id ="priority" name="Priority" value="High"> High 
+						<input type="radio"id ="priority" name="Priority" value="Medium"> Medium
+						<input type="radio" id ="priority" name="Priority" value="Low"> Low</td>
+					</tr>
+					<tr>
+					   	  <td><label> List </label></td>
+		 						 <td><select id ="list">
+		 							 <option value="Backup">Backup</option>
+  									<option value="ToDo">ToDo</option>
+  									<option value="Doing">Doing</option>
+ 									 <option value="Done">Done</option>
+									</select></td>
+					</tr>
+ 				
+					<tr><td><input type ="submit" value="submit" name="submit"></td></tr>
+					
+                                	
+                               </table>
+			</form>
+
+
+		</body>
+
+
+
+</html>
