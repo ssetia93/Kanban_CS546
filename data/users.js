@@ -48,6 +48,7 @@ var exportmethods =
                 
         });
     },
+<<<<<<< HEAD
 
    updateUser(id, newdetails)
      {
@@ -86,6 +87,8 @@ var exportmethods =
             });
         });
      }
+=======
+>>>>>>> parent of e031ff4... commit
 }
  
  
