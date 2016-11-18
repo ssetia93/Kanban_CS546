@@ -48,6 +48,44 @@ var exportmethods =
                 
         });
     },
+
+     updateUser(id, newdetails)
+     {
+        return users().then((userdata) =>
+        {
+            var updatedetails = {};
+
+            if(newdetails.firstname) 
+            {
+              updatedetails.firstname = newdetails.firstname;
+            }
+
+            if(newdetails.lastname) 
+            {
+              updatedetails.lastname = newdetails.lastname;
+            }
+
+            if(newdetails.email) 
+            {
+              updatedetails.email = newdetails.email;
+            }
+
+            if(newdetails.occupation) 
+            {
+              updatedetails.occupation = newdetails.occupation;
+            }
+
+            var updateCommand =
+            {
+                 $set: updatedetails
+            };
+
+            return userdata.updateOne({_id : id} , updateCommand).then((result) =>
+            {
+                return this.getUserById(id);
+            });
+        });
+     }
 }
  
  
