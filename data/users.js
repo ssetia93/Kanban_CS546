@@ -2,7 +2,7 @@ const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
 const uuid = require('node-uuid');
 
-var exportmethods
+var exportmethods = 
 {
 
  getAllUsers() 
@@ -27,7 +27,28 @@ var exportmethods
          });
        
     });
- }
+ },
 
+  addUser(firstname,lastname,email,occupation)
+   {
+        return users().then((userdata) => {
+           var newUser = {
+                _id: uuid.v4(),
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                occupation: occupation
+                
+            };
+        return userdata.insertOne(newUser).then((newInsertInformation) => {
+            return newInsertInformation.insertedId;
+                    }).then((newId) => {
+                        return this.getUserByIdById(newId);
+            });
+                
+        });
+    },
+}
+ 
  
 module.exports = exportmethods;
