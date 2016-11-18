@@ -49,7 +49,7 @@ var exportmethods =
         });
     },
 
-     updateUser(id, newdetails)
+   updateUser(id, newdetails)
      {
         return users().then((userdata) =>
         {
