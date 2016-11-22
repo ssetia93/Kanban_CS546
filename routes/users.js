@@ -20,7 +20,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/createuser", (req, res) => {
     var newuserData = req.body; // getting the request body from the post data 
 
     userData.addUser(newuserData.firstname, newuserData.lastname, newuserData.email, newuserData.occupation)
