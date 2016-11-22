@@ -7,25 +7,20 @@ dbConnection().then(db => {
     return db.dropDatabase().then(() => {
             return dbConnection;
         }).then((db) => {
-            var firstname = "Oliver";
-            var lastname = "Twist";
-            var email = "Oliver@xyz.com";
-            var occupation = "Manager";
-            return users.addUser(firstname,lastname,email,occupation);
-        }).then((users) => {
-            var id = users._id;
+            return users.addUser("Oliver","Twist","Oliver@xyz.com","manager");
+        }).then((Oliver) => {
+            var id = Oliver._id;
 
         }).then(() =>
         {
-             var firstname = "Harry";
-            var lastname = "Potter";
-            var email = "hpotter@xyz.com";
-            var occupation = "Student";
-            return users.addUser(firstname,lastname,email,occupation);
-        }).then((users) =>
+            return users.addUser("Harry","Potter","hpotter@xyz.com","student");
+        }).then((Harry) =>
         {
-            var id = users._id;
-             console.log("Done seeding database");
+            var id = Harry._id;
+            
+        }).then(() =>
+        {
+            console.log("Done seeding database");
             db.close();
         });
 
