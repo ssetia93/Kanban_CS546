@@ -1,6 +1,8 @@
+
 var dbConnection = require("../config/mongoConnection");
 var data = require("../data/");
 var users = data.users;
+var taskList = data.taskList;
 
 
 dbConnection().then(db => {
@@ -9,15 +11,10 @@ dbConnection().then(db => {
         }).then((db) => {
             return users.addUser("Oliver","Twist","Oliver@xyz.com","manager");
         }).then((Oliver) => {
-            var id = Oliver._id;
+            const id = Oliver._id;
 
-        }).then(() =>
-        {
-            return users.addUser("Harry","Potter","hpotter@xyz.com","student");
-        }).then((Harry) =>
-        {
-            var id = Harry._id;
-            
+        return taskList.addTask(id, "Install Oracle Database", "Oliver Twist", "olive@xyz.com", "We will be using the Oracle 11g database.", "12/31/2016", "11/18/2016", "low");
+
         }).then(() =>
         {
             console.log("Done seeding database");
