@@ -1,4 +1,5 @@
 
+
 const dbConnection = require("./mongoConnection");
 
 
@@ -17,6 +18,10 @@ let getCollectionFn = (collection) => {
 }
 
 
-module.exports = {
-users: getCollectionFn("users")
+module.exports = 
+
+{
+users: getCollectionFn("users"),
+ taskList: getCollectionFn("taskList")
+
 };
