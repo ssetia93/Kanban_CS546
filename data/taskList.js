@@ -6,7 +6,9 @@ const users = require("./users");
 const uuid = require('node-uuid');
 
 let exportedMethods = {
-    getAllTasks() {
+	
+	
+	getAllTasks() {
         return taskList().then((taskCollection) => {
             return taskCollection
 			.find({})
@@ -20,6 +22,48 @@ let exportedMethods = {
             });
         });
     },
+	
+	
+    	/*getAllTaskLists() {
+        return taskList().then((taskCollection) => {
+			return taskCollection
+			.find({})
+			.toArray()
+			.then((task) => {
+                let taskArray = [];
+                for(let i=0;i<task.length;i++){
+                    taskArray.push({_id:task[i]._id,title:task[i].title});
+                }
+                taskOfArray = taskArray;
+    
+				
+				let newTaskList = { 
+				  _id: uuid.v4(),
+				  taskTitle: taskTitle,
+				  creator: [
+					{
+					  creatorName: creatorName,
+					  creatorEmail: creatorEmail,
+					  id: id
+					}
+				  ],
+				  description: description,
+				  duedate: duedate,
+				  creationdate: creationdate,
+				  priority: priority,
+				  tasks: taskOfArray
+				};
+				
+				return newTaskList;
+ 
+				
+				
+				
+			})
+		})
+            
+        
+    },*/
     getTaskById(id) {
         return taskList().then((taskCollection) => {
             return taskCollection
@@ -87,9 +131,9 @@ let exportedMethods = {
                 updatedTaskData.title = updatedTask.title;
             }
 
-            if (updatedTask.ingredients) {
+            /*if (updatedTask.ingredients) {
                 updatedTaskData.ingredients = updatedTask.ingredients;
-            }
+            }*/
 
 			if (updatedTask.steps) {
                 updatedTaskData.steps =updatedTask.steps;
