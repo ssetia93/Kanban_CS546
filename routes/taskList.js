@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const data = require("../data");
 const taskData = data.taskList;
+//const user = data.users;
 
 router.get("/:id", (req, res) => {
 
@@ -20,6 +21,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/", (req, res) => {
+	//const userId = user._id;
     taskData.getAllTasks().then((taskList) => {
         res.json(taskList);
     }).catch((e) => {
