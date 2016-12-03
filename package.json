@@ -1,14 +1,14 @@
 {
-  "name": "test",
+  "name": "kanban",
   "version": "1.0.0",
-  "description": "user profile",
+  "description": "Final Project for CS546",
   "main": "app.js",
   "scripts": {
     "seed": "node ./tasks/seed.js",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "AjayShankar Arumugam",
+  "author": "Kawaika-A Minesota",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
