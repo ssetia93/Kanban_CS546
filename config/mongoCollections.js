@@ -22,8 +22,5 @@ module.exports =
 {
 users: getCollectionFn("users"),
  taskList: getCollectionFn("taskList"),
- backupList: getCollectionFn("backupList"),
- toDoList: getCollectionFn("toDoList"),
- doingList: getCollectionFn("doingList"),
- doneList: getCollectionFn("doneList")
+ list: getCollectionFn("list")
 };
