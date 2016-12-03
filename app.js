@@ -33,6 +33,38 @@ app.use(passport.session());
 app.use(flash()); 
 
 
+const LocalStrategy    = require("passport-local").Strategy;
+const data = require("./data");
+const User = data.user;
+
+ let isMatch = function(password,userPassword) {
+    return bcrypt.compareSync(password, userPassword);
+    }
+
+    passport.use('local-login', new LocalStrategy({ usernameField : 'username', passwordField : 'password', passReqToCallback : true },
+    
+    function(req, username, password, done) {
+       
+        process.nextTick(function() {
+            User.getUser(username , function(err, user) {
+               
+                if (err)
+                    return done(err);
+
+                if (!user)
+                    return done(null, false, req.flash('loginMessage', 'No user found.'));
+
+                if (!isMatch(password, user.password))
+                    return done(null, false, req.flash('loginMessage', 'Wrong password.'));
+                else
+                    return done(null, user);
+            });
+        });
+
+    }));
+
+    
+
 configRoutes(app);
 
 
