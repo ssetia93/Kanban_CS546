@@ -1,5 +1,4 @@
 
-
 const mongoCollections = require("../config/mongoCollections");
 const taskList = mongoCollections.taskList;
 const users = require("./users");
@@ -75,10 +74,10 @@ let exportedMethods = {
             });
         });
     },
-    addTask(id,taskTitle, creatorName, creatorEmail, description, duedate, creationdate, priority) {
+    addTask(creatorid,taskTitle, creatorName, creatorEmail, description, duedate, creationdate, priority) {
         return taskList().then((taskCollection) => {
 
-         return users.getUserById(id).then((userTask) => 
+         return users.getUserById(creatorid).then((userTask) => 
          
             {
 			let newTask = { 
@@ -88,7 +87,7 @@ let exportedMethods = {
                 {
                   creatorName: creatorName,
                   creatorEmail: creatorEmail,
-				  id: id
+				  id: creatorid
                 }
               ],
               description: description,
