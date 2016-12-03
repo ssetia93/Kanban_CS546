@@ -13,7 +13,7 @@ const session      = require('express-session');
 
 const static = express.static(__dirname + '/public');
 
-var configRoutes = require("./routes");
+
 
 
 app.use("/public", static);
@@ -74,7 +74,28 @@ const User = data.users;
         });
     });
 
-configRoutes(app);
+
+var configRoutes = require("./routes");
+
+const exphbs = require('express-handlebars');
+
+const Handlebars = require('handlebars');
+
+const handlebarsInstance = exphbs.create({
+    defaultLayout: 'main',
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        asJSON: (obj, spacing) => {
+            if (typeof spacing === "number")
+                return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
+
+            return new Handlebars.SafeString(JSON.stringify(obj));
+        }
+    },
+    partialsDir: [
+        'views/partials/'
+    ]
+});
 
 
 
