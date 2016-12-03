@@ -4,9 +4,8 @@ const data = require("../data");
 const taskData = data.list;
 
 
-router.get("/:id", (req, res) => {
-	//const userId = user._id;
-    taskData.getAllTasksForUser(req.params.id).then((taskList) => {
+router.get("/:id/:list", (req, res) => {
+    taskData.getAllTasksForUser(req.params.id, req.params.list).then((taskList) => {
         res.json(taskList);
     }).catch((e) => {
         res.status(500).json({ error: e });

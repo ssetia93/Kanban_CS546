@@ -18,6 +18,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/", (req, res) => {
+	//const userId = user._id;
     taskData.getAllTasks().then((taskList) => {
         res.json(taskList);
     }).catch((e) => {
@@ -60,7 +61,7 @@ router.post("/", (req, res) => {
     }
        
 	
-	taskData.addTask(blogTaskData.creator[0].id, blogTaskData.taskTitle,blogTaskData.creator[0].creatorName,blogTaskData.creator[0].creatorEmail, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
+	taskData.addTask(blogTaskData.creator[0].id, blogTaskData.title,blogTaskData.creator[0].creatorName,blogTaskData.creator[0].creatorEmail, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
         .then((newTask) => {
             res.json(newTask);
         }).catch((e) => {

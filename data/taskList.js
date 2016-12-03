@@ -6,7 +6,6 @@ const uuid = require('node-uuid');
 
 let exportedMethods = {
 	
-	
 	getAllTasks() {
         return taskList().then((taskCollection) => {
             return taskCollection
@@ -32,7 +31,7 @@ let exportedMethods = {
             });
         });
     },
-    addTask(creatorid,taskTitle, creatorName, creatorEmail, description, duedate, creationdate, priority) {
+    addTask(creatorid,taskTitle,list, creatorName, creatorEmail, description, duedate, creationdate, priority) {
         return taskList().then((taskCollection) => {
 
          return users.getUserById(creatorid).then((userTask) => 
@@ -41,6 +40,7 @@ let exportedMethods = {
 			let newTask = { 
               _id: uuid.v4(),
               taskTitle: taskTitle,
+              list:list,
               creator: [
                 {
                   creatorName: creatorName,
@@ -84,10 +84,9 @@ let exportedMethods = {
         return taskList().then((taskCollection) => {
             let updatedTaskData = {};         
 
-            if (updatedTask.taskTitle) {
-                updatedTaskData.taskTitle = updatedTask.taskTitle;
+            if (updatedTask.title) {
+                updatedTaskData.title = updatedTask.title;
             }
-
 			if (updatedTask.steps) {
                 updatedTaskData.steps =updatedTask.steps;
             }
