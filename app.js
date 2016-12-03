@@ -97,7 +97,23 @@ const handlebarsInstance = exphbs.create({
     ]
 });
 
+const rewriteUnsupportedBrowserMethods = (req, res, next) => {
+    
+    if (req.body && req.body._method) {
+        req.method = req.body._method;
+        delete req.body._method;
+    }
 
+   
+    next();
+};
+
+app.use(rewriteUnsupportedBrowserMethods);
+
+app.engine('handlebars', handlebarsInstance.engine);
+app.set('view engine', 'handlebars');
+
+configRoutes(app);
 
 app.listen(3000, () => {
     console.log("We've now got a server!");
