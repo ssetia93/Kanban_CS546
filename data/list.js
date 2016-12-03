@@ -1,5 +1,6 @@
 const mongoCollections = require("../config/mongoCollections");
-const taskList = mongoCollections.list;
+const finalList = mongoCollections.finalList;
+const taskList = mongoCollections.taskList;
 const users = require("./users");
 const uuid = require('node-uuid');
 
@@ -8,7 +9,7 @@ let exportedMethods = {
 
 
 getAllTasksForUser(id) {
-        //return taskList().then((taskCollection) => {
+        //return finalList().then((taskCollection) => {
 		return users.getUserById(id).then((userTask) => {
 			return taskList().then((taskCollection) => 			
             {
@@ -18,9 +19,9 @@ getAllTasksForUser(id) {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    taskArray.push({_id:task[i]._id,title:task[i].title});
+                    taskArray.push({_id:task[i]._id,title:task[i].taskTitle});
                 }
-				let newTaskList = { 
+				let newFinalList = { 
 				  _id: uuid.v4(),
 				  /*creator: [
 					{
@@ -31,9 +32,11 @@ getAllTasksForUser(id) {
 				  ],*/
 				  tasks: taskArray
 				};
-				return newTaskList;
+				return newFinalList;
 			});	
             });
         });
     } 
 }
+
+module.exports = exportedMethods;
