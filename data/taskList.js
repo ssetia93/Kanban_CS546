@@ -126,8 +126,8 @@ let exportedMethods = {
         return taskList().then((taskCollection) => {
             let updatedTaskData = {};         
 
-            if (updatedTask.title) {
-                updatedTaskData.title = updatedTask.title;
+            if (updatedTask.taskTitle) {
+                updatedTaskData.taskTitle = updatedTask.taskTitle;
             }
 
             /*if (updatedTask.ingredients) {

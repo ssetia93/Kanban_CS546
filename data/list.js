@@ -6,8 +6,6 @@ const uuid = require('node-uuid');
 
 let exportedMethods = {
 
-
-
 getAllTasksForUser(id) {
         //return finalList().then((taskCollection) => {
 		return users.getUserById(id).then((userTask) => {
