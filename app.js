@@ -35,7 +35,7 @@ app.use(flash());
 
 const LocalStrategy    = require("passport-local").Strategy;
 const data = require("./data");
-const User = data.user;
+const User = data.users;
 
  let isMatch = function(password,userPassword) {
     return bcrypt.compareSync(password, userPassword);
