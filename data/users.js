@@ -39,7 +39,7 @@ var exportmethods =
                 lastName: lastName,
                 email: email,
                 occupation: occupation,
-                password: brc
+                password: bcrypt.hashSync(password),
                  _id: uuid.v4(),
                  tasks: []
                 
