@@ -54,7 +54,7 @@ router.post("/", (req, res) => {
     }
     
 
-    userData.addUser(newuserData[0].firstName, newuserData[0].lastName, newuserData[0].email, newuserData[0].occupation)
+    userData.addUser(newuserData[0].firstName, newuserData[0].lastName, newuserData[0].email, newuserData[0].occupation, newuserData[0].password)
         .then((newUser) => {
             res.json(newUser);
         },() => {
