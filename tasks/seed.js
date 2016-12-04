@@ -8,7 +8,7 @@ dbConnection().then(db => {
     return db.dropDatabase().then(() => {
             return dbConnection;
         }).then((db) => {
-            return users.addUser("Oliver","Twist","Oliver@xyz.com","manager");
+            return users.addUser("Oliver","Twist","Oliver@xyz.com","manager","olive");
         }).then((Oliver) => {
             const id = Oliver._id;
 
