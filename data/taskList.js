@@ -14,7 +14,7 @@ let exportedMethods = {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    taskArray.push({_id:task[i]._id,title:task[i].title});
+                    taskArray.push({_id:task[i]._id,title:task[i].taskTitle});
                 }
                 return taskArray;
             });
@@ -84,11 +84,18 @@ let exportedMethods = {
         return taskList().then((taskCollection) => {
             let updatedTaskData = {};         
 
-            if (updatedTask.title) {
-                updatedTaskData.title = updatedTask.title;
+            if (updatedTask.taskTitle) {
+                updatedTaskData.taskTitle = updatedTask.taskTitle;
             }
-			if (updatedTask.steps) {
-                updatedTaskData.steps =updatedTask.steps;
+			if (updatedTask.description) {
+                updatedTaskData.description =updatedTask.description;
+            }
+            if (updatedTask.duedate) {
+                updatedTaskData.duedate =updatedTask.duedate;
+            }
+            
+            if (updatedTask.priority) {
+                updatedTaskData.priority =updatedTask.priority;
             }
 			
             let updatedCommand = {

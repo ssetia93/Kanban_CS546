@@ -20,7 +20,6 @@ getAllTasksForUser(id, listName) {
 					}
                 }
 				let newFinalList = { 
-				  _id: uuid.v4(),
 				  tasks: taskArray
 				};
 				return newFinalList;
