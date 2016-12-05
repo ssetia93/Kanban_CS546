@@ -1,0 +1,100 @@
+body {
+    background:black;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    position: relative;
+    font-size: 20px;
+}
+
+main {
+    max-width: 75%;
+    margin: auto;
+}
+
+header {
+    border-bottom: 1px solid red;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color:lightpink;
+    margin-bottom: 2px;
+}
+
+h1 {
+    font-size: 46px;
+    line-height: 40px;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 34px;
+    line-height: 40px;
+}
+
+h4 {
+    font-size: 28px;
+    line-height: 20px;
+}
+
+h5 {
+    font-size: 24px;
+    line-height: 20px;
+}
+
+h6 {
+    font-size: 22px;
+    line-height: 20px;
+}
+
+p {
+    color:purple;
+    font-size: 20px;
+    line-height: 20px;
+}
+p.peopleClass{
+    width: 150%;
+    background-color: yellow;
+}
+p.locationClass{
+    width:75%;
+    background-color: orangered;
+}
+p.eventsClass{
+    width:75%;
+    background-color: palevioletred;
+}
+.sublist{
+    font-style:italic;
+    margin-left:100px; 
+}
+
+a:link {
+    color:red;
+    text-decoration: none;
+    background-color: yellow;
+    text-align: center;
+
+}
+
+a:visited {
+    color: green;
+    text-decoration: none;
+    background-color: cyan;
+    text-align: center;
+}
+
+a:hover {
+    color:hotpink;
+    text-decoration: underline;
+    background-color: lightgreen;
+    font-size: 150%;
+}
+
+a:active {
+    color: blue;
+    background-color: hotpink;
+    text-decoration: underline;
+}
