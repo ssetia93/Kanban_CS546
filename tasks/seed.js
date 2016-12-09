@@ -20,6 +20,12 @@ dbConnection().then(db => {
 		}).then(() => {
 			return taskList.addTask(id, "task done","done", "Oliver Twist", "olive@xyz.com", "We will be installing the MongoDB server.", "01/11/2016", "12/18/2016", "high")//;
 		
+		}).then(() => {
+			return taskList.addTask(id, "TestTask","done", "Oliver Twist", "olive@xyz.com", "We will be installing the MongoDB server.", "01/11/2016", "12/18/2016", "high")//;
+		
+		}).then(() => {
+			return taskList.addTask(id, "TestTask","backup", "Oliver Twist", "olive@xyz.com", "We will be installing the MongoDB server.", "01/11/2016", "12/18/2016", "high")//;
+		
 		})
 		
 		}).then(() => {
