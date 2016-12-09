@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h1><span class=""></span> Tasks:</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div>
+		       {{#if tasks}}
+                <p>
+                    
+                    <strong>taskTitle</strong>: {{tasks.taskTitle}}<br>
+                    <strong>list</strong>: {{tasks.list}}<br>
+                    <strong>creator  </strong> <br>
+                    {{#each tasks.creator}}
+            <strong>name </strong>{{this.creatorName}}<br>
+            <strong>email </strong>{{this.creatorEmail}}<br>
+            <strong>id </strong> {{this.id}}<br>
+           {{/each}}
+       
+                    
+                    <strong>description</strong>: {{tasks.description}}<br>
+                    <strong>duedate</strong>: {{tasks.duedate}}<br>
+                    <strong>creationdate</strong>: {{tasks.creationdate}}<br>
+                    <strong>priority</strong>: {{tasks.priority}}<br>
+                    
+                </p>
+				{{/if}}
+                
+        
+</div>
