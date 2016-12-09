@@ -14,7 +14,7 @@ let exportedMethods = {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    taskArray.push({_id:task[i]._id,title:task[i].title});
+                    taskArray.push({_id:task[i]._id,title:task[i].taskTitle});
                 }
                 return taskArray;
             });

@@ -11,16 +11,15 @@ router.get("/:id", (req, res) => {
     }
 
     taskData.getTaskById(req.params.id).then((task) => {
-        res.json(task);
+		res.render("TaskList/Task",{tasks:task});
     }).catch(() => {
         res.status(404).json({ error: "Task not found" });
     });
 });
 
 router.get("/", (req, res) => {
-	//const userId = user._id;
-    taskData.getAllTasks().then((taskList) => {
-        res.json(taskList);
+    taskData.getAllTasks().then((taskList) => {    
+        res.render("TaskList/tasklistings",{task:taskList});
     }).catch((e) => {
         res.status(500).json({ error: e });
     });
