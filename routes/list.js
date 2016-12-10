@@ -4,14 +4,6 @@ const data = require("../data");
 const taskData = data.list;
 
 
-router.get("/:id/:list", (req, res) => {
-    taskData.getAllTasksForUser(req.params.id, req.params.list).then((taskList) => {
-        res.json(taskList);
-    }).catch((e) => {
-        res.status(500).json({ error: e });
-    });
-});
-
 router.get("/:id", (req, res) => {
     taskData.getAllTasksForUser(req.params.id).then((taskList) => {
         tasks = taskList.tasks
@@ -33,7 +25,7 @@ router.get("/:id", (req, res) => {
                 doingTasks.push(tasks[i])
             }
         }
-        res.render("list/list",{todo:todoTasks, backup:backupTasks, done:doneTasks, doing:doingTasks});
+        res.render("list/list",{partial:"userProfile-scripts",todo:todoTasks, backup:backupTasks, done:doneTasks, doing:doingTasks});
     }).catch((e) => {
         res.status(500).json({ error: e });
     });

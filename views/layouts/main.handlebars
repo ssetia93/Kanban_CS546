@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/public/css/main.css">
     <title>KANBAN</title>
+                <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
     
 </head>
 
@@ -16,10 +19,22 @@
                 {{{body}}}
             </div>
         </div>
+        
     </main>
+  <script>
+   var a = Math.ceil(Math.random() * 9)+ '';
+    var b = Math.ceil(Math.random() * 9)+ '';
+    var c = Math.ceil(Math.random() * 9)+ '';
+    var d = Math.ceil(Math.random() * 9)+ '';
+    var e = Math.ceil(Math.random() * 9)+ '';
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
+    var code = a + b + c + d + e;
+    document.getElementById("txtCaptcha").value = code;
+    document.getElementById("txtCaptchaDiv").innerHTML = code;
+    </script>
+    <script src="/public/js/memberSignup.js"></script>
+    <script src="/public/js/signin.js"></script>
+     {{> (lookup . 'partial') }}
 </body>
 
 </html>

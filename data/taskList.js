@@ -1,7 +1,7 @@
-
+"use strict";
 const mongoCollections = require("../config/mongoCollections");
 const taskList = mongoCollections.taskList;
-const users = require("./users");
+const users = require("./signin");
 const uuid = require('node-uuid');
 
 let exportedMethods = {
@@ -14,7 +14,7 @@ let exportedMethods = {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    taskArray.push({_id:task[i]._id,title:task[i].taskTitle});
+                    taskArray.push({_id:task[i]._id,taskTitle:task[i].taskTitle,list:task[i].list});
                 }
                 return taskArray;
             });

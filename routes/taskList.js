@@ -11,7 +11,7 @@ router.get("/:id", (req, res) => {
     }
 
     taskData.getTaskById(req.params.id).then((task) => {
-		res.render("TaskList/Task",{tasks:task});
+		res.render("TaskList/Task",{partial:"userProfile-scripts",tasks:task});
     }).catch(() => {
         res.status(404).json({ error: "Task not found" });
     });
@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
 
 router.get("/", (req, res) => {
     taskData.getAllTasks().then((taskList) => {    
-        res.render("TaskList/tasklistings",{task:taskList});
+        res.render("TaskList/tasklistings",{partial:"userProfile-scripts",task:taskList});
     }).catch((e) => {
         res.status(500).json({ error: e });
     });
