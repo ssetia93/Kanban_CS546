@@ -37,13 +37,10 @@ userData.getUserBySessionId(req.cookies.sessionId).then((memberInfo)=>{
         if(memberInfo)
         {
             userData.getUserById(memberInfo._id).then((userInfo)=>{
-                res.render("signin/membersignup", {partial:"memberSignup-scripts",createorUpdate:"Y",firstName: memberInfo.firstName, lastName: memberInfo.lastName , email:memberInfo.email,occupation: memberInfo.occupation, password:memberInfo.password});
+                res.render("signin/membersignup", {partial:"memberSignup-scripts",createorUpdate:"N",firstName: memberInfo.firstName, lastName: memberInfo.lastName , email:memberInfo.email,occupation: memberInfo.occupation, password:memberInfo.password});
             }).catch((e)=>{
                 res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});
             });
-        }
-        else{
-            res.render("signin/membersignup", {partial:"memberSignup-scripts",createorUpdate:"N",firstName: memberInfo.firstName, lastName: memberInfo.lastName, email:memberInfo.email,occupation: memberInfo.occupation,password:memberInfo.password});
         }
     }).catch((e)=>{
         res.render("error/errorpage", {partial:"signin-scripts",invalidUser:true,error:e});
@@ -141,7 +138,7 @@ router.post("/memberSignup", (req, res) => {
 });
 
 router.delete("/delete", (req, res) => {
-    var member = userData.getUserBySessionIdBySessionId(req.cookies.sessionId);
+    var member = userData.getUserBySessionId(req.cookies.sessionId);
     member.then((memberObj)=>{
         return userData.removeUser(memberObj._id).then(()=>{
             if(req.cookies.sessionId)

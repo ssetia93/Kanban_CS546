@@ -4,7 +4,7 @@ var data = require("../data");
 var userData = data.signin;
 var async = require("async");
 var xss = require("xss");
-
+const taskData = data.list;
 
 router.get("/:id", (req, res) => 
 
@@ -18,28 +18,13 @@ router.get("/:id", (req, res) =>
        userData.getUserBySessionId(req.cookies.sessionId).then((userInfo)=>
        
        {
-
-          
-               if(userInfo)
-               {
                   userData.getUserById(userInfo._id).then((user) =>
                   {
-                       res.render("user/profile", {partial:"userProfile-scripts",userInfo:userInfo,checkListValue:"profile",userType:true});
+                       res.render("user/profile", {partial:"signin-scripts",userInfo:user,checkListValue:"profile",userType:true});
                                 }).catch((e)=>{
                                     //console.log(e);
                                     res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});//Technical error
                                 });
-                }
-
-                else
-
-                {
-                     res.render("user/profile", {partial:"userProfile-scripts", userInfo:userInfo,checkListValue:"profile",userType:true});
-
-                }
-               
-          
-    
        }).catch((e)=>
              {
                     res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});
@@ -52,16 +37,13 @@ router.get("/:id", (req, res) =>
         userData.getUserBySessionId(req.cookies.sessionId).then((userInfo)=>
        
        {
-             if(userInfo)
-             {
                 userData.getUserById(userInfo._id).then((user) =>
                 {
-                     res.render("user/users", {partial:"userProfile-scripts",users:userInfo,checkListValue:"profile",userType:true});
+                     res.render("user/users", {partial:"userProfile-scripts",users:user,checkListValue:"profile",userType:true});
                               }).catch((e)=>{
                                   //console.log(e);
                                   res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});//Technical error
                               });
-              }
         });
     }
     

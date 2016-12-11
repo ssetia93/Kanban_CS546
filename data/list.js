@@ -16,7 +16,7 @@ getAllTasksForUser(id, listName) {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    	taskArray.push({_id:task[i]._id,title:task[i].taskTitle,list:task[i].list});
+                    	taskArray.push({_id:task[i]._id,title:task[i].taskTitle,list:task[i].list,duedate:task[i].duedate});
                 }
 				let newFinalList = { 
 				  _id: uuid.v4(),

@@ -116,5 +116,35 @@ function removeSpaces(string){
 
     
 });
+var UserDeleteAccount=$("#deleteAccount");
+
+UserDeleteAccount.click(function(event){
+    event.preventDefault();
+    alert("inside user js scripts");
+    /*alert(seekerId);*/
+    try{
+
+        var requestConfig = {
+                method: "DELETE",
+                url: "/signup/delete"
+                
+            };
+
+            $.ajax(requestConfig).then(function (responseMessage) {
+                console.log("successfully deleted !");
+                 window.location="http://localhost:3000/signup/deletedprofile";
+     
+                    
+             });
+
+    }catch(e){
+            var message = typeof e === "string" ? e : e.message;
+            
+            console.log(e);
+            alert(e);
+            event.preventDefault();
+
+    }
+});
 
 })(jQuery,window.location,window.localStorage);
