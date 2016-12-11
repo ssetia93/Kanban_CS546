@@ -8,6 +8,10 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssetia93/Kanban_CS546"
+  },
   "author": "Kawaika-A Minesota",
   "license": "ISC",
   "dependencies": {
