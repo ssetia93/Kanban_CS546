@@ -6,48 +6,35 @@ var async = require("async");
 var xss = require("xss");
 const taskData = data.list;
 
-router.get("/:id", (req, res) => 
+router.get("/:id", (req, res) => {
+    console.log("Invoked inside user.js");
+    console.log(req.params.id);
+    if (xss(req.params.id) == "profile") {
+        console.log("Inside Profile");
+        console.log("Session id + " + req.cookies.sessionId);
+        userData.getUserBySessionId(req.cookies.sessionId).then((userInfo) => {
+            userData.getUserById(userInfo._id).then((user) => {
+                res.render("user/profile", { partial: "signin-scripts", userInfo: user, checkListValue: "profile", userType: true });
+            }).catch((e) => {
+                res.render("error/errorpage", { partial: "signin-scripts", invalidUser: false, error: e });//Technical error
+            });
+        }).catch((e) => {
+            res.render("error/errorpage", { partial: "signin-scripts", invalidUser: false, error: e });
+        })
 
-{
-  console.log("Invoked inside user.js");
-  console.log(req.params.id);
-     if(xss(req.params.id) == "profile")  
-    {
-      console.log("Inside Profile");
-      console.log("Session id + " + req.cookies.sessionId);
-       userData.getUserBySessionId(req.cookies.sessionId).then((userInfo)=>
-       
-       {
-                  userData.getUserById(userInfo._id).then((user) =>
-                  {
-                       res.render("user/profile", {partial:"signin-scripts",userInfo:user,checkListValue:"profile",userType:true});
-                                }).catch((e)=>{
-                                    //console.log(e);
-                                    res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});//Technical error
-                                });
-       }).catch((e)=>
-             {
-                    res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});
-             })
 
-      
 
-    }else if(xss(req.params.id) == "users"){
-      /*alert("sucess");*/
-        userData.getUserBySessionId(req.cookies.sessionId).then((userInfo)=>
-       
-       {
-                userData.getUserById(userInfo._id).then((user) =>
-                {
-                     res.render("user/users", {partial:"userProfile-scripts",users:user,checkListValue:"profile",userType:true});
-                              }).catch((e)=>{
-                                  //console.log(e);
-                                  res.render("error/errorpage", {partial:"signin-scripts",invalidUser:false,error:e});//Technical error
-                              });
+    } else if (xss(req.params.id) == "users") {
+        userData.getUserBySessionId(req.cookies.sessionId).then((userInfo) => {
+            userData.getUserById(userInfo._id).then((user) => {
+                res.render("user/users", { partial: "userProfile-scripts", users: user, checkListValue: "profile", userType: true });
+            }).catch((e) => {
+                res.render("error/errorpage", { partial: "signin-scripts", invalidUser: false, error: e });//Technical error
+            });
         });
     }
-    
-  });
+
+});
 
 router.get("/", (req, res) => {
     userData.getAllUsers().then((userList) => {
@@ -58,10 +45,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    
+
     var newuserData = req.body; // getting the request body from the post data 
 
-     if (!newuserData[0]) {
+    if (!newuserData[0]) {
         res.status(400).json({ error: "You must provide data to create a user" });
         return;
     }
@@ -85,12 +72,12 @@ router.post("/", (req, res) => {
         res.status(400).json({ error: "You must provide a valid occupation detail" });
         return;
     }
-    
+
 
     userData.addUser(newuserData[0].firstName, newuserData[0].lastName, newuserData[0].email, newuserData[0].occupation, newuserData[0].password)
         .then((newUser) => {
             res.json(newUser);
-        },() => {
+        }, () => {
             res.sendStatus(500);
         });
 });

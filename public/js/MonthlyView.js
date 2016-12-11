@@ -1,6 +1,4 @@
-
 var eventObject = null;
-
 var new_obj = [];
 
 window.onload = () => {
@@ -8,8 +6,8 @@ window.onload = () => {
     var userId = $("#userId").text();
     var d = new Date();
     var month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    var month = d.getMonth();   //0-11
-    var year = d.getFullYear(); //2014
+    var month = d.getMonth();
+    var year = d.getFullYear();
     var first_date = month_name[month] + " 1 " + year;
     $("#date_here").text(month_name[month] + " " + year);
 
@@ -18,14 +16,14 @@ window.onload = () => {
         url: '/list/calendardata/' + userId
     };
 
-    $.ajax(get_allData).then(function (allData) {
+    $.ajax(get_allData).then(function(allData) {
         console.log(allData);
         eventObject = allData;
         new_obj = allData;
         get_calendar(first_date);
     });
 
-    $(".update_month").click(function (e) {
+    $(".update_month").click(function(e) {
 
         if ($(this).val() === "prev") {
             console.log("Prev Clicked");
@@ -58,13 +56,13 @@ window.onload = () => {
         console.log("Add Monthly Event called");
         $("#warning").addClass('hidden')
 
-        validateAddEvent().then(function (request_obj) {
+        validateAddEvent().then(function(request_obj) {
             console.log("In Then");
-            $.ajax(request_obj).then(function (response) {
+            $.ajax(request_obj).then(function(response) {
                 $("#common_add_event_modal").modal("toggle");
                 window.location.reload(true);
             });
-        }, function (ex) {
+        }, function(ex) {
             console.log("In Error");
             $("#warning").text("");
             $("#warning").text(ex);
@@ -72,7 +70,7 @@ window.onload = () => {
         });
     });
 
-    $(document.body).on('click', '.date', function () {
+    $(document.body).on('click', '.date', function() {
         var date_clicked = month_name[month] + " " + $(this).find(".desktop_date").text() + " " + year;
         if ($(this).data("date") !== undefined) {
             var dateSelected = "" + $(this).data("date");
@@ -115,26 +113,26 @@ window.onload = () => {
                 $("#backup-list").empty();
                 $("#doing-list").empty();
                 if (todo.length > 0) {
-                    for(var i = 0; i < todo.length; i++){
-                        $("#todo-list").append('<a href=/taskList/'+todo[i]._id+' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>'+todo[i].title+'</a>');
+                    for (var i = 0; i < todo.length; i++) {
+                        $("#todo-list").append('<a href=/taskList/' + todo[i]._id + ' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>' + todo[i].title + '</a>');
                     }
                 }
 
                 if (done.length > 0) {
-                    for(var i = 0; i < done.length; i++){
-                        $("#done-list").append('<a  href=/taskList/'+done[i]._id+' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>'+done[i].title+'</a>');
+                    for (var i = 0; i < done.length; i++) {
+                        $("#done-list").append('<a  href=/taskList/' + done[i]._id + ' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>' + done[i].title + '</a>');
                     }
                 }
 
                 if (backup.length > 0) {
-                    for(var i = 0; i < backup.length; i++){
-                        $("#backup-list").append('<a  href=/taskList/'+backup[i]._id+' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>'+backup[i].title+'</a>');
+                    for (var i = 0; i < backup.length; i++) {
+                        $("#backup-list").append('<a  href=/taskList/' + backup[i]._id + ' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>' + backup[i].title + '</a>');
                     }
                 }
 
                 if (doing.length > 0) {
-                    for(var i = 0; i < doing.length; i++){
-                        $("#doing-list").append('<a  href=/taskList/'+doing[i]._id+' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>'+doing[i].title+'</a>');
+                    for (var i = 0; i < doing.length; i++) {
+                        $("#doing-list").append('<a  href=/taskList/' + doing[i]._id + ' class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>' + doing[i].title + '</a>');
                     }
                 }
                 $("#taskModal").modal("toggle")
@@ -143,19 +141,17 @@ window.onload = () => {
     });
 }
 
-
-
 function validateAddEvent() {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
         var title = $("#title").val();
         var list = $("#list").val();
         var duedate = $("#duedate").val();
-        var priority = $("#priority").val();   
-        var creationdate = $("#creationdate").val(); 
-        var description = $("#description").val();      
+        var priority = $("#priority").val();
+        var creationdate = $("#creationdate").val();
+        var description = $("#description").val();
         var id = $("#userId").text()
 
-        if (duedate == "" || duedate == null ) {
+        if (duedate == "" || duedate == null) {
             reject("Invalid dueDate");
             return;
         }
@@ -261,8 +257,6 @@ function get_calendar(first_date) {
         var filteredEvents = new_obj.filter(event => {
             return event.duedate === new_date;
         })
-
-
         var todo = [];
         var done = [];
         var backup = [];

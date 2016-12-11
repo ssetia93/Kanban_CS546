@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var multer  = require('multer');
+var multer = require('multer');
 var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var fs = require('fs');
@@ -25,7 +25,7 @@ var handlebarsInstance = exphbs.create({
         asJSON: (obj, spacing) => {
             if (typeof spacing === "number")
                 return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
-        
+
             return new Handlebars.SafeString(JSON.stringify(obj));
         }
     },
@@ -37,10 +37,9 @@ var handlebarsInstance = exphbs.create({
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 23;
-rule.minute =29;
-//rule.minute = new schedule.Range(0, 59, 2);
+rule.minute = 29;
 
-schedule.scheduleJob(rule, function(){
+schedule.scheduleJob(rule, function () {
 
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -50,71 +49,67 @@ schedule.scheduleJob(rule, function(){
         }
     });
 
-    myData.getAllUsers().then(function(applicationList) {
+    myData.getAllUsers().then(function (applicationList) {
 
-       applicationList.forEach(function (application) {
-            myData.getUserById(application._id).then(function(userDetails) {
+        applicationList.forEach(function (application) {
+            myData.getUserById(application._id).then(function (userDetails) {
 
                 var remindermail = {
                     from: 'kanbanboard2016@gmail.com', // sender address
                     to: userDetails.email, // list of receivers
                     subject: 'Reminder', // Subject line
-                    text: "Hello "+ userDetails.firstName + userDetails.lastName + ", Kindly follow up with your pending tasks at KANBAN!!"//, // plaintext body
-                    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+                    text: "Hello " + userDetails.firstName + userDetails.lastName + ", Kindly follow up with your pending tasks at KANBAN!!"//, // plaintext body
                 };
-                transporter.sendMail(remindermail, function(error, info){
-                    if(error){
+                transporter.sendMail(remindermail, function (error, info) {
+                    if (error) {
                         console.log(error);
-                    }else{
+                    } else {
                         console.log('Message sent: ' + info.response);
                     };
                 });
-                
 
 
-            }, function(errorMessage) {
-                console.log("errorMessage user"+errorMessage)
+
+            }, function (errorMessage) {
+                console.log("errorMessage user" + errorMessage)
             });
-       });
+        });
 
-    }, 
-function(errorMessage) {
-        console.log("errorMessage for mailer"+errorMessage)
-    });
+    },
+        function (errorMessage) {
+            console.log("errorMessage for mailer" + errorMessage)
+        });
 
-    myData.getAllUsers().then(function(applicationList) {
+    myData.getAllUsers().then(function (applicationList) {
 
-       applicationList.forEach(function (application) {
-            myList.getAllTasksForUser(application._id).then(function(userDetails) {
+        applicationList.forEach(function (application) {
+            myList.getAllTasksForUser(application._id).then(function (userDetails) {
                 userDetails.tasks.forEach(function (task) {
 
-                var congratulatorymail = {
-                    from: 'kanbanboard2016@gmail.com', // sender address
-                    to: task.creatorEmail, // list of receivers
-                    subject: 'Congratulations', // Subject line
-                    text: "Hello " + task.creatorName + ", We congratulate you on completing " + task.title//, // plaintext body
-                    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-                };
-                if(task.list == "done"){
-                transporter.sendMail(congratulatorymail, function(error, info){
-                    if(error){
-                        console.log(error);
-                    }else{
-                        console.log('Message sent: ' + info.response);
+                    var congratulatorymail = {
+                        from: 'kanbanboard2016@gmail.com', // sender address
+                        to: task.creatorEmail, // list of receivers
+                        subject: 'Congratulations', // Subject line
+                        text: "Hello " + task.creatorName + ", We congratulate you on completing " + task.title//, // plaintext body
                     };
+                    if (task.list == "done") {
+                        transporter.sendMail(congratulatorymail, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Message sent: ' + info.response);
+                            };
+                        });
+                    }
+                }, function (errorMessage) {
+                    console.log("errorMessage user" + errorMessage)
                 });
-                }
-
-
-            }, function(errorMessage) {
-                console.log("errorMessage user"+errorMessage)
             });
-       });
-       })
-    }, 
-function(errorMessage) {
-        console.log("errorMessage for mailer"+errorMessage)
-    });
+        })
+    },
+        function (errorMessage) {
+            console.log("errorMessage for mailer" + errorMessage)
+        });
 });
 
 var rewriteUnsupportedBrowserMethods = (req, res, next) => {

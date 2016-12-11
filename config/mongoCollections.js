@@ -17,10 +17,10 @@ let getCollectionFn = (collection) => {
 }
 
 
-module.exports = 
+module.exports =
 
-{
-users: getCollectionFn("signin"),
- taskList: getCollectionFn("taskList"),
- list: getCollectionFn("list")
-};
+    {
+        users: getCollectionFn("signin"),
+        taskList: getCollectionFn("taskList"),
+        list: getCollectionFn("list")
+    };

@@ -11,15 +11,15 @@ router.get("/:id", (req, res) => {
     }
 
     taskData.getTaskById(req.params.id).then((task) => {
-		res.render("TaskList/Task",{partial:"userProfile-scripts",tasks:task});
+        res.render("TaskList/Task", { partial: "userProfile-scripts", tasks: task });
     }).catch(() => {
         res.status(404).json({ error: "Task not found" });
     });
 });
 
 router.get("/", (req, res) => {
-    taskData.getAllTasks().then((taskList) => {    
-        res.render("TaskList/tasklistings",{partial:"userProfile-scripts",task:taskList});
+    taskData.getAllTasks().then((taskList) => {
+        res.render("TaskList/tasklistings", { partial: "userProfile-scripts", task: taskList });
     }).catch((e) => {
         res.status(500).json({ error: e });
     });
@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     let blogTaskData = req.body;
-	
+
     if (!blogTaskData) {
         res.status(400).json({ error: "Please provide inputs for the task" });
         return;
@@ -46,23 +46,23 @@ router.post("/", (req, res) => {
         res.status(400).json({ error: "Please provide the list for the task" });
         return;
     }
-	
-    if (!blogTaskData.duedate ) {
+
+    if (!blogTaskData.duedate) {
         res.status(400).json({ error: "Please provide the duedate for the task" });
         return;
     }
-	
-	if (!blogTaskData.creationdate) {
+
+    if (!blogTaskData.creationdate) {
         res.status(400).json({ error: "Please provide the creationdate for the task" });
         return;
     }
-	
-	if (!blogTaskData.priority) {
+
+    if (!blogTaskData.priority) {
         res.status(400).json({ error: "Please provide the priority for the task" });
         return;
     }
-       
-	taskData.addTask(blogTaskData.creatorID, blogTaskData.title,blogTaskData.list, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
+
+    taskData.addTask(blogTaskData.creatorID, blogTaskData.title, blogTaskData.list, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
         .then((newTask) => {
             res.json(newTask);
         }).catch((e) => {
@@ -71,24 +71,24 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-	let updatedData = req.body;
+    let updatedData = req.body;
 
     let getTask = taskData.getTaskById(req.params.id);
 
-     if (!updatedData) {
+    if (!updatedData) {
         res.status(400).json({ error: "Please provide the data for updating a task" });
         return;
     }
 
-	if (updatedData._id) {
+    if (updatedData._id) {
         res.status(400).json({ error: "You cannot update the task Id" });
         return;
     }
-	
+
     if (!req.params.id) {
         res.status(400).json({ error: "You must provide an ID for updating a task" });
         return;
-    }   
+    }
 
     getTask.then(() => {
         return taskData.updateTask(req.params.id, updatedData)
