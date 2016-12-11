@@ -3,7 +3,7 @@ body {
     font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     position: relative;
     font-size: 20px;
-    background-image: url("images/background.jpeg");
+    background-image: url("images/background.jpg");
 
     background-size:100%;
 }
@@ -84,9 +84,9 @@ a:link {
 }
 
 a:visited {
-    color: green;
+    color: black;
     text-decoration: none;
-    background-color: white;
+    background-color: hotpink;
     text-align: center;
 
 }
@@ -106,6 +106,15 @@ a:active {
 
 .signUp-span{
     font-size:30px;
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.logout-span{
+    font-size:30px;
+    float: right;
+    
+
 }
 .signin-link{
     font-size:30px;
@@ -116,26 +125,35 @@ a:active {
 
 .update-profile-btn{
     
-    font-size: 30px;
-    }
-    .view-list{
-        font-size:30px;
-    }
+font-size: 30px;
+}
+.view-list{
+    font-size:30px;
+}
 
-    footer{
-    float: left;
-    height: 80px;
-    width: 100%;
-    
-    
-    bottom:0px;
-    position:fixed;
+footer{
+float: left;
+height: 80px;
+width: 100%;
+bottom:0px;
+position:fixed;
 }
 address{
     color:white;
     font-size:18px;
     float:left;
     margin: 15px;
+}
+.image-container{
+    background-image: url("images/display.jpeg");
+    background-size: contain;
+     
+    height: 488px;
+    margin-bottom: 100px;
+    margin-right: 200px;
+    
+    width: 100%;
+    background-repeat:no-repeat;
 }
 
 a.link{
@@ -149,10 +167,13 @@ p{
     font-weight:bold;
     text-align:center;
     }
-    div.image {
-   content:url("images/display.jpeg");
-  position: absolute;
+    #close{
+        float:right; padding: 0px -40px -15px;
+        top: 3px;
+        right: 8px; 
+        
   
 
-
-}​
+    
+}
+   

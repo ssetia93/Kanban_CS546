@@ -34,7 +34,15 @@ router.get("/:id", (req, res) => {
 
 router.get("/calendardata/:id", (req,res) =>{
   taskData.getAllTasksForUser(req.params.id).then((taskList) => {
-      res.json(taskList.tasks);
+      var tasks = taskList.tasks
+      var calendarTasks = []
+      for(var i =0; i < tasks.length; i++){
+          if (tasks[i].creatorID == req.params.id){
+              calendarTasks.push(tasks[i])
+          }
+      }
+    res.json(calendarTasks);
+
   });
 });
 router.get("/calendar/:id", (req,res) =>{

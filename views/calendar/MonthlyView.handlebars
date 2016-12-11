@@ -5,6 +5,7 @@
     </div>
     <div class="col-xs-10 monthSelect" style="float:right">
         <span style="float:right;margin: 0 22px 0 0;">
+            
                 <button type="button" value="prev" class="btn btn-primary update_month"><span class="glyphicon glyphicon-triangle-left"></span></button>
         &nbsp;<span id="date_here">Date</span>&nbsp;
         <button type="button" value="next" class="btn btn-primary update_month"><span class="glyphicon glyphicon-triangle-right"></span></button>
@@ -12,6 +13,7 @@
     </div>
 
 </div>
+
 <br/>
 <div>
     <div id="calendar-dates" class="flex-container">
@@ -76,8 +78,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="add_monthly">Add</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary " id="add_monthly">Add</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -94,6 +96,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" id="task-heading"></h4>
             </div>
+            <div class="b">
             <div class="modal-body" id="task-body">
                 <p><span class="glyphicon glyphicon-pushpin"></span>&nbsp;Todo List: </p>
                 <div class="list-group" id="todo-list">
@@ -111,6 +114,7 @@
                 <div class="list-group" id="done-list">
 
                 </div>
+            </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
