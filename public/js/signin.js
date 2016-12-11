@@ -27,7 +27,7 @@ function emailCheck(user,pass){
 lsubmit.click(function(event){
     event.preventDefault();
 
-alert('Inside the alert');
+//alert('Inside the alert');
     lErrorContainer.addClass("hidden");
     var userNameVal=lUsername.val();
     var passwordVal=lpassword.val();

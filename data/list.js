@@ -6,7 +6,7 @@ const uuid = require('node-uuid');
 
 let exportedMethods = {
 
-getAllTasksForUser(id, listName) {
+getAllTasksForUser(id) {
 		return users.getUserById(id).then((userTask) => {
 			return taskList().then((taskCollection) => 			
             {
@@ -16,7 +16,8 @@ getAllTasksForUser(id, listName) {
 			.then((task) => {
                 let taskArray = [];
                 for(let i=0;i<task.length;i++){
-                    	taskArray.push({_id:task[i]._id,title:task[i].taskTitle,list:task[i].list,duedate:task[i].duedate});
+                    	taskArray.push({_id:task[i]._id,title:task[i].taskTitle,list:task[i].list,duedate:task[i].duedate,creatorEmail:task[i].creator[0].creatorEmail,
+							creatorName:task[i].creator[0].creatorName});
                 }
 				let newFinalList = { 
 				  _id: uuid.v4(),

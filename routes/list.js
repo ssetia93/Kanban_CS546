@@ -11,6 +11,7 @@ router.get("/:id", (req, res) => {
         var backupTasks =[]
         var doneTasks = []
         var doingTasks =[]
+        var id = taskList._id
         for(var i =0; i < tasks.length; i++){
             if (tasks[i].list == "todo"){
                 todoTasks.push(tasks[i])
@@ -25,9 +26,20 @@ router.get("/:id", (req, res) => {
                 doingTasks.push(tasks[i])
             }
         }
-        res.render("list/list",{partial:"userProfile-scripts",todo:todoTasks, backup:backupTasks, done:doneTasks, doing:doingTasks});
+        res.render("list/list",{partial:"userProfile-scripts",taskID:req.params.id,todo:todoTasks, backup:backupTasks, done:doneTasks, doing:doingTasks});
     }).catch((e) => {
         res.status(500).json({ error: e });
     });
+});
+
+router.get("/calendardata/:id", (req,res) =>{
+  taskData.getAllTasksForUser(req.params.id).then((taskList) => {
+      res.json(taskList.tasks);
+  });
+});
+router.get("/calendar/:id", (req,res) =>{
+            res.render("calendar/MonthlyView",{partial:"MonthlyView-scripts",id:req.params.id});
+
+
 });
 module.exports = router;

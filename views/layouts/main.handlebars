@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/public/css/main.css">
+        <link rel="stylesheet" href="/public/css/monthly.css">
+
+
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
     <title>KANBAN</title>
@@ -13,17 +16,21 @@
         crossorigin="anonymous"></script>
                 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
+<script src="/public/js/tota11y.min.js"></script>
 
     
 </head>
 
 <body>
     <main class="container">
-        <h3>KANBAN BOARD</h3>
+        <h1>KANBAN BOARD</h1>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 {{{body}}}
             </div>
+            
+    
+                
         </div>
         
     </main>
@@ -42,5 +49,7 @@
     <script src="/public/js/signin.js"></script>
      {{> (lookup . 'partial') }}
 </body>
-
+<footer>
+    	<address>contact us :(+1)-132-209-8429</address>
+    </footer>
 </html>

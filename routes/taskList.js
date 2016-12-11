@@ -33,14 +33,17 @@ router.post("/", (req, res) => {
         return;
     }
 
-   
-    if (!blogTaskData.taskTitle) {
+    if (!blogTaskData.title) {
         res.status(400).json({ error: "Please provide a title for the task." });
         return;
     }
 
     if (!blogTaskData.description) {
         res.status(400).json({ error: "Please provide the description for the task" });
+        return;
+    }
+    if (!blogTaskData.list) {
+        res.status(400).json({ error: "Please provide the list for the task" });
         return;
     }
 	
@@ -60,7 +63,7 @@ router.post("/", (req, res) => {
     }
        
 	
-	taskData.addTask(blogTaskData.creator[0].id, blogTaskData.title,blogTaskData.creator[0].creatorName,blogTaskData.creator[0].creatorEmail, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
+	taskData.addTask(blogTaskData.creatorID, blogTaskData.title,blogTaskData.list, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
         .then((newTask) => {
             res.json(newTask);
         }).catch((e) => {

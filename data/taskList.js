@@ -31,7 +31,7 @@ let exportedMethods = {
             });
         });
     },
-    addTask(creatorid,taskTitle,list, creatorName, creatorEmail, description, duedate, creationdate, priority) {
+    addTask(creatorid,taskTitle,list, description, duedate, creationdate, priority) {
         return taskList().then((taskCollection) => {
 
          return users.getUserById(creatorid).then((userTask) => 
@@ -43,8 +43,8 @@ let exportedMethods = {
               list:list,
               creator: [
                 {
-                  creatorName: creatorName,
-                  creatorEmail: creatorEmail,
+                  creatorName: userTask.firstName,
+                  creatorEmail: userTask.email,
 				  id: creatorid
                 }
               ],
