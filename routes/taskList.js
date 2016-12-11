@@ -62,8 +62,7 @@ router.post("/", (req, res) => {
         return;
     }
        
-	
-	taskData.addTask(xss(blogTaskData.creatorID), xss(blogTaskData.title),xss(blogTaskData.list), xss(blogTaskData.description), xss(blogTaskData.duedate), xss(blogTaskData.creationdate), xss(blogTaskData.priority))
+	taskData.addTask(blogTaskData.creatorID, blogTaskData.title,blogTaskData.list, blogTaskData.description, blogTaskData.duedate, blogTaskData.creationdate, blogTaskData.priority)
         .then((newTask) => {
             res.json(newTask);
         }).catch((e) => {
