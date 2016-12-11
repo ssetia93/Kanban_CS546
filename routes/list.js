@@ -11,18 +11,18 @@ router.get("/:id", (req, res) => {
         var backupTasks =[]
         var doneTasks = []
         var doingTasks =[]
-        var id = taskList._id
+        var userID = req.params.id
         for(var i =0; i < tasks.length; i++){
-            if (tasks[i].list == "todo"){
+            if (tasks[i].list == "todo" && tasks[i].creatorID == userID){
                 todoTasks.push(tasks[i])
             }
-            if (tasks[i].list == "backup"){
+            if (tasks[i].list == "backup" && tasks[i].creatorID == userID){
                 backupTasks.push(tasks[i])
             }
-            if (tasks[i].list == "done"){
+            if (tasks[i].list == "done" && tasks[i].creatorID == userID){
                 doneTasks.push(tasks[i])
             }
-            if (tasks[i].list == "doing"){
+            if (tasks[i].list == "doing" && tasks[i].creatorID == userID){
                 doingTasks.push(tasks[i])
             }
         }
